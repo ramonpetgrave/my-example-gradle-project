@@ -1,0 +1,45 @@
+name: Detect Runner
+on:
+  workflow_call:
+    # inputs:
+    #   token2:
+    #     description: "The GitHub Actions token."
+    #     required: false
+    #     default: ${{ github.token }}
+    #     type: string
+    secrets:
+      token:
+        description: "The GitHub Actions token."
+jobs:
+  detect-runner-ubuntu-latest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ramonpetgrave64/my-example-gradle-project/.github/actions/detect-runner-js@self-hosted-build
+        with:
+          token: ${{ secrets.token || github.token }}
+  detect-runner-self-hosted:
+    runs-on: label-from-child-workflow
+    steps:
+      - uses: ramonpetgrave64/my-example-gradle-project/.github/actions/detect-runner-js@self-hosted-build
+        with:
+          token: ${{ secrets.token || github.token }}
+  my-detect-github-token:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ramonpetgrave64/slsa-github-generator/.github/actions/ensure-github-hosted-runners-js@ramonpetgrave-new-check-as-action
+        with:
+          token: ${{ github.token }}
+
+  my-detect-github-secret-token:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ramonpetgrave64/slsa-github-generator/.github/actions/ensure-github-hosted-runners-js@ramonpetgrave-new-check-as-action
+        with:
+          token: ${{ secrets.token }}
+
+  my-detect-both-tokens:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ramonpetgrave64/slsa-github-generator/.github/actions/ensure-github-hosted-runners-js@ramonpetgrave-new-check-as-action
+        with:
+          token: ${{ secrets.token || github.token }}

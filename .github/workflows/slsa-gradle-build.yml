@@ -1,0 +1,23 @@
+name: SLSA Provenance with Gradle builder
+on: [workflow_dispatch, push]
+
+permissions: read-all
+
+jobs:
+  build:
+    # runs-on: self-hosted # not allowed whe  using a resuable workflow
+    permissions:
+      id-token: write
+      contents: read
+      actions: read
+    # uses: slsa-framework/slsa-github-generator/.github/workflows/builder_gradle_slsa3.yml@v1.9.0
+    uses: ramonpetgrave64/slsa-github-generator/.github/workflows/builder_gradle_slsa3.yml@ramonpetgrave64-gradle-fix
+    with:
+      artifact-list: >-
+        ./build/app/libs/app.jar,
+        ./build/app/classes/java/main/my/example/gradle/project/App.class,
+
+  other-job:
+    runs-on: self-hosted
+    steps:
+        - run: echo hello

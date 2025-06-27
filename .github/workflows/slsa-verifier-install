@@ -1,6 +1,7 @@
 name: testing slasa-verifier action installer
 on: 
   pull_request:
+  push:
 
 jobs:
   v270:

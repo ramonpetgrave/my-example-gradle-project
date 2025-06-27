@@ -1,0 +1,24 @@
+name: testing slasa-verifier action installer
+on: 
+  pull_request:
+
+jobs:
+  v270:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: slsa-framework/slsa-verifier/actions/installer@v2.7.0
+    
+  v271:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: slsa-framework/slsa-verifier/actions/installer@v2.7.0
+
+  v270hash:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: slsa-framework/slsa-verifier/actions/installer@v6657aada084353c65e5dde35394b1a010289fab0 # v2.7.0
+
+  v271hash:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: slsa-framework/slsa-verifier/actions/installer@ea584f4502babc6f60d9bc799dbbb13c1caa9ee6 # v2.7.1

@@ -17,7 +17,7 @@ jobs:
   v270hash:
     runs-on: ubuntu-latest
     steps:
-    - uses: slsa-framework/slsa-verifier/actions/installer@v6657aada084353c65e5dde35394b1a010289fab0 # v2.7.0
+    - uses: slsa-framework/slsa-verifier/actions/installer@6657aada084353c65e5dde35394b1a010289fab0 # v2.7.0
 
   v271hash:
     runs-on: ubuntu-latest
